@@ -23,39 +23,39 @@ Instead, it has access to a set of over 60 well-defined "tools." These tools are
 
 The LLM's role is simply to be the intelligent switchboard operator, translating a fuzzy human request into a precise sequence of tool calls.
 
-## A Visual Walkthrough: Features of an Orchestrated System
+## A Visual Walkthrough: Key Features of an Orchestrated System
 
-The power of this architecture isn't just in the LLM's reasoning, but in the deterministic features and data transparency that the tool-based system enables. Here’s a look at some of the key features.
+The power of this architecture isn't just in the LLM's reasoning, but in how it enables specific, deterministic features and transparent data flows. Here’s a look at some of the key capabilities.
 
 ### 1. Deterministic Control: Adjusting Playlist Weights
 
-Beyond just a natural language prompt, the UI allows for direct, deterministic control over the playlist creation logic. The user can adjust specific weights—like "Energy" or "Danceability"—that are passed directly to the backend tools. This isn't a fuzzy request; it's a set of precise parameters that the code uses to filter and select tracks. This ensures that the user has fine-grained, reliable control over the output, with the LLM acting as the orchestrator of these well-defined inputs.
+The UI provides explicit, deterministic control over the playlist creation logic. Users can adjust specific weights—such as "Energy" or "Danceability"—which are passed as precise parameters to the backend tools. This ensures that the user has fine-grained, reliable influence over the recommendation output, with the LLM orchestrating these well-defined inputs.
 
-<img src="/about-me/blog/images/02-playlist-result.png" width="600" alt="UI for adjusting deterministic weights for playlist creation.">
-*The UI allows users to set explicit, deterministic weights that directly influence the backend logic for playlist generation.*
+<img src="/about-me/blog/images/01-chat-interface.png" width="600" alt="UI for adjusting deterministic weights for playlist creation.">
+*The UI captures not just text, but weighted parameters from controls like the "Mood Machine" to fine-tune the recommendation engine.*
 
 ### 2. Local Knowledge: Surfacing Unique Stats
 
-Because the system maintains its own local database of listening history, it can generate and display rich statistics that are impossible to get from the Spotify API alone. This "local knowledge" allows the user to see insights about their own listening patterns, track audio features, and understand the data that the recommendation tools are working with.
+By maintaining its own local database of listening history, the system can generate and display rich, personalized statistics that are unique to the user. This "local knowledge" offers insights into listening patterns and audio features, providing transparency into the data driving the recommendation tools.
 
 <img src="/about-me/blog/images/03-tool-call-example.png" width="600" alt="Display of statistics derived from the local database.">
-*The system can surface unique statistics and insights derived from its local knowledge base of the user's listening history.*
+*The system leverages its local knowledge base to surface unique statistics and insights based on the user's listening history.*
 
 ### 3. Execution Transparency: The Partial Execution Flow
 
-To build trust and provide visibility, the system doesn't hide its work. For complex queries, it displays a partial execution flow, showing the user the sequence of tools being called to fulfill the request. This transparency reinforces the "LLM as orchestrator" pattern, making it clear that the system is executing a series of discrete, understandable steps.
+To foster trust and clarity, the system provides a partial execution flow for complex queries. This shows the user the sequence of backend tools being called to fulfill their request, reinforcing the "LLM as orchestrator" pattern by demonstrating a series of discrete, understandable steps being executed.
 
 <img src="/about-me/blog/images/04-spotify-playlist.png" width="600" alt="A partial execution flow showing the sequence of tool calls.">
-*The system provides transparency by showing the user the partial execution flow of the tools being run to satisfy their request.*
+*Transparency in action: a partial execution flow demonstrates the sequence of tools being run to satisfy the request.*
 
 ### 4. The Final Output: Natural Language Response
 
-After all the deterministic logic, tool execution, and data processing is complete, the final step is handed back to the LLM. Its job is to synthesize the results into a concise, easy-to-understand natural language response, confirming that the requested actions have been completed.
+After all deterministic logic, tool execution, and data processing are complete, the LLM synthesizes the results into a concise, easy-to-understand natural language response. This final confirmation provides a user-friendly summary of the actions taken and the successful completion of the request.
 
-<img src="/about-me/blog/images/01-chat-interface.png" width="600" alt="The final natural language response from the LLM.">
-*The final step: the LLM provides a clean, natural language summary of the results of the tool execution.*
+<img src="/about-me/blog/images/02-playlist-result.png" width="600" alt="The final natural language response from the LLM.">
+*The LLM provides a clear, natural language summary of the results, confirming the successful completion of the request.*
 
-This entire flow highlights a system that uses an LLM for its strengths (language understanding) while relying on robust, deterministic, and transparent tools for its core logic.
+This flow demonstrates how a lightweight LLM can orchestrate a sophisticated workflow by leveraging structured data from a purpose-built UI and a robust set of deterministic tools.
 
 ## Why This Architecture is So Efficient
 
