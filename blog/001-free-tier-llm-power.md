@@ -11,7 +11,7 @@ There's a common assumption in the world of AI today: to build something truly p
 
 Enter "DJ Steve," a project born from a simple desire: to create Spotify playlists based on my *actual* listening history, not just the whims of a generic algorithm. It's a voice-controlled music assistant that understands requests like "play some punk I haven't heard in a while" or "create a playlist of artists similar to NOFX or Screeching Weasel, but only include tracks I haven't listened to in the last year."
 
-![DJ Steve Chat Interface](/about-me/blog/images/01-chat-interface.png)
+<img src="/about-me/blog/images/01-chat-interface.png" width="600" alt="DJ Steve Chat Interface">
 
 This might sound like it requires a massive model that knows my entire music taste. But it doesn't. The secret lies in a simple but powerful architectural pattern: **the LLM is treated as an orchestrator, not a database.**
 
@@ -32,17 +32,17 @@ Let's walk through a real-world request from the system's architecture plan: **"
 3.  **Reasoning and Tool Selection:** The LLM understands the *intent*. It doesn't know the answer, but it knows *how to ask for it*. It determines that the `queryArtistsByRecency` tool is the right one for the job and calls it with the appropriate parameters: `queryArtistsByRecency({ notListenedSince: "6 months" })`.
 4.  **Application Code Executes:** The MCP server receives the tool call. This triggers a piece of deterministic, efficient TypeScript code that runs a SQL query against the local `listening_events` database. This is fast, cheap, and precise.
 
-    ![Example of the LLM deciding to call a tool](/about-me/blog/images/03-tool-call-example.png)
+    <img src="/about-me/blog/images/03-tool-call-example.png" width="600" alt="Example of the LLM deciding to call a tool">
 
 5.  **Data Returned to LLM:** The server returns a list of artist names to the LLM.
 6.  **Multi-Turn Orchestration:** The LLM now has the data it needs to proceed. It continues the "conversation" by calling other tools in sequence: `getArtistTopTracks()` for the neglected artists, followed by `createPlaylist()` and `addTracksToPlaylist()` to build the final result in Spotify.
 7.  **Natural Language Response:** Once the orchestration is complete, the LLM's final job is to compose a user-friendly response, like: "I've created a new playlist called 'Rediscovery Mix' with tracks from artists you haven't listened to in over six months."
 
-    ![The final chat response after tool execution](/about-me/blog/images/02-playlist-result.png)
+    <img src="/about-me/blog/images/02-playlist-result.png" width="600" alt="The final chat response after tool execution">
 
 The entire process results in a new playlist, created and populated in Spotify, ready to play.
 
-![The final generated playlist in Spotify](/about-me/blog/images/04-spotify-playlist.png)
+<img src="/about-me/blog/images/04-spotify-playlist.png" width="600" alt="The final generated playlist in Spotify">
 
 ## Why This Architecture is So Efficient
 
