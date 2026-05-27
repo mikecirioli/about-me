@@ -31,19 +31,19 @@ The power of this architecture isn't just in the LLM's reasoning, but in how it 
 
 The UI provides explicit, deterministic control over the playlist creation logic. Users can adjust specific weights—such as "Energy" or "Danceability"—which are passed as precise parameters to the backend tools. This ensures that the user has fine-grained, reliable influence over the recommendation output, with the LLM orchestrating these well-defined inputs.
 
-<img src="/about-me/blog/images/03-tool-call-example.png" width="600" alt="Display of statistics derived from the local database.">
-*The system leverages its local knowledge base to surface unique statistics and insights based on the user's listening history.*
+<img src="/about-me/blog/images/03-tool-call-example.png" width="600" alt="UI for adjusting deterministic weights for playlist creation.">
+*The UI captures weighted parameters from controls like the "Mood Machine" to fine-tune the recommendation engine, ensuring deterministic playlist generation.*
 
 ### 2. Local Knowledge: Surfacing Unique Stats
 
-By maintaining its own local database of listening history, the system can generate and display rich, personalized statistics that are unique to the user. This "local knowledge" offers insights into listening patterns and audio features, providing transparency into the data driving the recommendation tools.
+By maintaining its own local database of listening history, the system can generate and display rich, personalized statistics that are unique to the user. This "local knowledge" offers deep insights into listening patterns and track audio features, providing transparency into the data driving the recommendation tools.
 
-<img src="/about-me/blog/images/01-chat-interface.png" width="600" alt="UI for adjusting deterministic weights for playlist creation.">
-*The UI captures not just text, but weighted parameters from controls like the "Mood Machine" to fine-tune the recommendation engine.*
+<img src="/about-me/blog/images/02-playlist-result.png" width="600" alt="Display of statistics derived from the local database.">
+*The system leverages its local knowledge base to surface unique statistics and insights based on the user's listening history.*
 
 ### 3. Execution Transparency: The Partial Execution Flow
 
-To foster trust and clarity, the system provides a partial execution flow for complex queries. This shows the user the sequence of backend tools being called to fulfill their request, reinforcing the "LLM as orchestrator" pattern by demonstrating a series of discrete, understandable steps being executed.
+To foster trust and clarity, the system provides a partial execution flow for complex queries. This visually shows the user the sequence of backend tools being called to fulfill their request, reinforcing the "LLM as orchestrator" pattern by demonstrating a series of discrete, understandable steps being executed.
 
 <img src="/about-me/blog/images/04-spotify-playlist.png" width="600" alt="A partial execution flow showing the sequence of tool calls.">
 *Transparency in action: a partial execution flow demonstrates the sequence of tools being run to satisfy the request.*
@@ -52,7 +52,7 @@ To foster trust and clarity, the system provides a partial execution flow for co
 
 After all deterministic logic, tool execution, and data processing are complete, the LLM synthesizes the results into a concise, easy-to-understand natural language response. This final confirmation provides a user-friendly summary of the actions taken and the successful completion of the request.
 
-<img src="/about-me/blog/images/02-playlist-result.png" width="600" alt="The final natural language response from the LLM.">
+<img src="/about-me/blog/images/01-chat-interface.png" width="600" alt="The final natural language response from the LLM.">
 *The LLM provides a clear, natural language summary of the results, confirming the successful completion of the request.*
 
 This flow demonstrates how a lightweight LLM can orchestrate a sophisticated workflow by leveraging structured data from a purpose-built UI and a robust set of deterministic tools.
